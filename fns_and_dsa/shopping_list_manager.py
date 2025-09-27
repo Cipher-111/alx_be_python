@@ -5,6 +5,8 @@ def display_menu():
     print("3. View List")
     print("4. Exit")
 
+item = input("Enter the item to add: ")
+
 def main():
     shopping_list = []
     while True:

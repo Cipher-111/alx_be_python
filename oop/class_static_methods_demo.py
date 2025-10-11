@@ -1,3 +1,5 @@
+# class_static_methods_demo.py
+
 class Calculator:
     """
     A class demonstrating the use of static methods and class methods in Python.

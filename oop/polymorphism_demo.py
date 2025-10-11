@@ -1,25 +1,65 @@
-class Calculator:
-    calculation_type = "Arithmetic Operations"
+# polymorphism_demo.py
+import math
 
-    @staticmethod
-    def add(a, b):
-        return a + b
+class Shape:
+    """
+    Base class for geometric shapes.
+    Defines a common interface for calculating area, which must be
+    implemented by derived classes.
+    """
+    def area(self):
+        """
+        Calculates the area of the shape.
+        This method is meant to be overridden by subclasses.
+        Raises:
+            NotImplementedError: If the method is not overridden in a derived class.
+        """
+        raise NotImplementedError("Subclasses must implement the 'area' method.")
 
-    @classmethod
-    def multiply(cls, a, b):
-        print(f"Calculation type: {cls.calculation_type}")
-        return a * b
+class Rectangle(Shape):
+    """
+    Represents a rectangle, inheriting from Shape.
+    Overrides the area() method to calculate the area of a rectangle.
+    """
+    def __init__(self, length: float, width: float):
+        """
+        Initializes a Rectangle instance.
 
+        Args:
+            length (float): The length of the rectangle.
+            width (float): The width of the rectangle.
+        """
+        self.length = length
+        self.width = width
 
-def main():
-    # Using the static method
-    sum_result = Calculator.add(10, 5)
-    print(f"The sum is: {sum_result}")
+    def area(self) -> float:
+        """
+        Calculates the area of the rectangle.
 
-    # Using the class method
-    product_result = Calculator.multiply(10, 5)
-    print(f"The product is: {product_result}")
+        Returns:
+            float: The area of the rectangle (length * width).
+        """
+        return self.length * self.width
 
+class Circle(Shape):
+    """
+    Represents a circle, inheriting from Shape.
+    Overrides the area() method to calculate the area of a circle.
+    """
+    def __init__(self, radius: float):
+        """
+        Initializes a Circle instance.
 
-if __name__ == "__main__":
-    main()
+        Args:
+            radius (float): The radius of the circle.
+        """
+        self.radius = radius
+
+    def area(self) -> float:
+        """
+        Calculates the area of the circle.
+
+        Returns:
+            float: The area of the circle (π * radius^2).
+        """
+        return math.pi * (self.radius ** 2)
